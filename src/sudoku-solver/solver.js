@@ -1,11 +1,11 @@
-const fourByFour = [
+export const fourByFour = [
     [2, 0, 3, 0],
     [0, 0, 1, 2],
     [0, 0, 2, 0],
     [1, 0, 4, 0]
 ];
 
-const sixBySix = [
+export const sixBySix = [
     [5, 0, 0, 0, 3, 4],
     [2, 0, 0, 5, 0, 1],
     [0, 0, 0, 0 ,0 ,0],
@@ -14,7 +14,7 @@ const sixBySix = [
     [0, 0, 0, 1, 0, 0]
 ];
 
-const nineByNine = [
+export const nineByNine = [
     [0, 5, 0, 0, 6, 7, 9, 0, 0],
     [0, 2, 0, 0, 0, 8, 4, 0, 0],
     [0, 3, 0, 9, 0, 0, 0, 0, 0],
@@ -28,7 +28,7 @@ const nineByNine = [
 
 const UNASSIGNED = 0;
 
-function solveSudoku(sudokuMatrix){
+export function solveSudoku(sudokuMatrix){
     const location = [0,0];
     if(!findEmpty(sudokuMatrix, location)){
         return true;
@@ -83,11 +83,12 @@ function usedInBox(sudokuMatrix, row, col, number) {
             boxRowSize = 2;
             break;
     }
-
+    boxRowBeg = parseInt(row / boxRowSize);
+    boxColBeg = parseInt(col / boxColSize);
 
     for(let i = 0; i < boxRowSize; i++){
         for (let j = 0; j < boxColSize; j++) {
-            if(sudokuMatrix[i + row][j + col] === number) {
+            if(sudokuMatrix[i + boxRowBeg][j + boxColBeg] === number) {
                 return true;
             }
         }
