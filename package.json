@@ -1,0 +1,26 @@
+{
+  "name": "sudoku-web-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node --project ./tsconfig.json ./src/main.ts",
+    "start:safe": "npm run lint && ts-node --project ./tsconfig.json ./src/main.ts",
+    "lint": "tslint --format stylish -p .",
+    "lint:fix": "tslint --fix -p .",
+    "clean": "rimraf ./dist",
+    "build": "npm run clean & tsc --project .",
+    "build-w": "npm run clean & tsc --project . -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.5.1",
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.3.38",
+    "eslint": "^7.3.0"
+  }
+}
