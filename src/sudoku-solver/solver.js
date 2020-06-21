@@ -15,21 +15,21 @@ export const sixBySix = [
 ];
 
 export const nineByNine = [
-    [0, 5, 0, 0, 6, 7, 9, 0, 0],
-    [0, 2, 0, 0, 0, 8, 4, 0, 0],
-    [0, 3, 0, 9, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 2, 1, 0, 4],
-    [0, 0, 0, 6, 0, 9, 0, 0, 0],
-    [0, 0, 8, 5, 0, 0, 6, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 4, 9, 0, 0, 5, 0],
-    [2, 1, 3, 7, 0, 0, 0, 0, 0]
-];
+    [0,0,0,0,0,0,8,0,0],
+    [0,0,4,0,0,8,0,0,9],
+    [0,7,0,0,0,0,0,0,5],
+    [0,1,0,0,7,5,0,0,8],
+    [0,5,6,0,9,1,3,0,0],
+    [7,8,0,0,0,0,0,0,0],
+    [0,2,0,0,0,0,0,0,0],
+    [0,0,0,9,3,0,0,1,0],
+    [0,0,5,7,0,0,4,0,3],
+]
 
 const UNASSIGNED = 0;
 
 export function solveSudoku(sudokuMatrix){
-    const location = [0,0];
+    const location = [];
     if(!findEmpty(sudokuMatrix, location)){
         return true;
     }
@@ -43,9 +43,9 @@ export function solveSudoku(sudokuMatrix){
             }
 
             sudokuMatrix[location[0]][location[1]] = UNASSIGNED;
-
         }
     }
+    return false;
 }
 
 function usedInRow(sudokuMatrix, row, number) {
@@ -83,8 +83,9 @@ function usedInBox(sudokuMatrix, row, col, number) {
             boxRowSize = 2;
             break;
     }
-    boxRowBeg = parseInt(row / boxRowSize);
-    boxColBeg = parseInt(col / boxColSize);
+    
+    boxRowBeg = row - row % boxRowSize;
+    boxColBeg = col - col % boxColSize;
 
     for(let i = 0; i < boxRowSize; i++){
         for (let j = 0; j < boxColSize; j++) {
@@ -112,6 +113,3 @@ function findEmpty(sudokuMatrix, location){
     }
     return false;
 }
-
-console.log(solveSudoku(nineByNine));
-console.table(nineByNine);

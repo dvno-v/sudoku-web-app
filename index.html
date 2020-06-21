@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sudoku app</title>
     <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/styles/toastr.min.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 <body>
@@ -26,192 +27,195 @@
               <a class="nav-link" id="switchTo4" href="#">4x4 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" id="switchTo4" href="#">Check Solution <span class="sr-only">(current)</span></a>
+              <a class="nav-link" id="checkSol" href="#">Check Solution <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" id="switchTo4" href="#">Solve <span class="sr-only">(current)</span></a>
+              <a class="nav-link" id="solve" href="#">Solve <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" id="reset" href="#">Reset <span class="sr-only">(current)</span></a>
             </li>
           </ul>
         </div>
       </nav>
     
-    <table id= "nine">
+    <table id= "nine" class= "active">
         <tr>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
       </table>
 
       <table id= "six">
         <tr>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
       </table>
 
       <table id= "four">
         <tr>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
         <tr>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
-          <td> x </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
       </table>
 </body>
@@ -220,6 +224,8 @@
   src="https://code.jquery.com/jquery-3.5.1.js"
   integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
   crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>  
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js">
+</script>
 <script src="src/main.js" type="module"></script>
 </html>

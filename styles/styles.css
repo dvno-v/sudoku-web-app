@@ -36,3 +36,29 @@ tr:first-child {
 #four td:nth-child(2n) {
     border-right:solid ;
 }
+
+input {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    border: none;
+    font-size: 15px;
+}
+
+.readonly {
+    font-weight: bold;
+}
+
+/* Disabling the scroll wheel for the input type=number fields. Got that from w3scools */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

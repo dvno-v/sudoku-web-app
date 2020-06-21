@@ -18,9 +18,11 @@
   "license": "ISC",
   "dependencies": {
     "jquery": "^3.5.1",
+    "toastr": "^2.1.4"
   },
   "devDependencies": {
     "@types/jquery": "^3.3.38",
+    "@types/toastr": "^2.1.38",
     "eslint": "^7.3.0"
   }
 }
