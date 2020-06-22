@@ -1,4 +1,4 @@
-import { nineByNine, sixBySix, fourByFour } from '../sudoku-solver/solver.js'
+import { nineByNine, sixBySix, fourByFour } from '../sudoku-logic/sudoku-solver/solver.js'
 
 export function populateTable(selector, matrix){
     $(selector).children('tbody').children('tr').each((i, el) => {

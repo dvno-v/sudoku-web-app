@@ -1,5 +1,5 @@
-import { nineByNine, sixBySix, fourByFour, solveSudoku } from './sudoku-solver/solver.js'
-import { populateTable, exportMatrixFromTable, checkIfSudokuIsFull, checkMatricesIfEqual, fillSolvedSudoku, getCopyOfActiveMatrix } from './utils/utils.js'
+import { solveSudoku } from './sudoku-logic/sudoku-solver/solver.js'
+import { exportMatrixFromTable, checkIfSudokuIsFull, checkMatricesIfEqual, fillSolvedSudoku, getCopyOfActiveMatrix } from './utils/utils.js'
 import { switchToFour } from './renderers/switch-to-four.js'
 import { switchToSix } from './renderers/switch-to-six.js'
 import { switchToNine } from './renderers/switch-to-nine.js'
@@ -35,5 +35,7 @@ import { populateSudokus } from './renderers/populateSudokus.js'
         solveSudoku(matrix);
         fillSolvedSudoku('table.active', matrix);
     });
+
+    toastr.error("a");
 
 })();
