@@ -1,3 +1,5 @@
+import { nineByNine, sixBySix, fourByFour } from '../sudoku-solver/solver.js'
+
 export function populateTable(selector, matrix){
     $(selector).children('tbody').children('tr').each((i, el) => {
         $(el).children('td').each((j, child) => {
@@ -54,4 +56,24 @@ export function fillSolvedSudoku(selector, solvedMatrix) {
             $(child).children('input').attr('value', solvedMatrix[i][j]);
         })
     })
+}
+
+function makeCopyOfMatrix(matrix) {
+    return JSON.parse(JSON.stringify(matrix));
+}
+
+export function getCopyOfActiveMatrix() {
+    let matrix;
+    switch($('table.active').attr('id')) {
+        case 'four':
+            matrix = makeCopyOfMatrix(fourByFour);
+            break;
+        case 'six':
+            matrix = makeCopyOfMatrix(sixBySix);
+            break;
+        case 'nine':
+            matrix = makeCopyOfMatrix(nineByNine);
+            break;
+    }
+    return matrix;
 }
