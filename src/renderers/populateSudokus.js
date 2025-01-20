@@ -1,10 +1,8 @@
-import { sixBySix, fourByFour, solveSudoku } from '../sudoku-logic/sudoku-solver/solver.js'
-import { getSudokuFromApi } from '../sudoku-logic/sudoku-generator/sudoku-service.js'
+import { sixBySix, fourByFour, nineByNine, solveSudoku } from '../sudoku-logic/sudoku-solver/solver.js'
 import { populateTable } from '../utils/utils.js'
 
 export const populateSudokus = async () => {
-    const nineByNine = await getSudokuFromApi()
-    populateTable('#nine', nineByNine.board);
+    populateTable('#nine', nineByNine);
     populateTable('#six', sixBySix);
     populateTable('#four', fourByFour);
 };
