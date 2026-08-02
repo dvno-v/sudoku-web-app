@@ -1,64 +1,303 @@
-#six, #four {
-    display: none;
+:root {
+    --bg: #f6f7f9;
+    --surface: #ffffff;
+    --text: #1b1d21;
+    --muted: #6b7280;
+    --line: #d4d7dd;
+    --rule: #1b1d21;
+    --accent: #2f6fed;
+    --given: #1b1d21;
+    --entry: #2f6fed;
+    --conflict-bg: #fdecec;
+    --conflict-fg: #c02626;
+    --wrong-bg: #fff4d6;
+    --wrong-fg: #9a6200;
+    --success: #157347;
+    --cell: 44px;
+    --radius: 10px;
+    color-scheme: light dark;
 }
 
-table {
-    margin:1em auto;
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #14161a;
+        --surface: #1c1f25;
+        --text: #e7e9ee;
+        --muted: #9aa1ad;
+        --line: #333842;
+        --rule: #8a93a3;
+        --accent: #6f9bff;
+        --given: #e7e9ee;
+        --entry: #6f9bff;
+        --conflict-bg: #3b1f22;
+        --conflict-fg: #ff8b8b;
+        --wrong-bg: #3a2f18;
+        --wrong-fg: #ffc86b;
+        --success: #46c88a;
+    }
 }
 
-td {
-    height:30px;
-    width:30px;
-    border:1px solid;
-    text-align:center;
+* {
+    box-sizing: border-box;
 }
 
-td:first-child {
-    border-left:solid;
+body {
+    margin: 0;
+    padding: 2rem 1rem 3rem;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.75rem;
 }
 
-#six td:nth-child(3n) ,#nine td:nth-child(3n) {
-    border-right:solid ;
+.app-header {
+    width: 100%;
+    max-width: 40rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
 }
 
-tr:first-child {
-    border-top:solid;
+h1 {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 650;
+    letter-spacing: -0.02em;
 }
 
-#nine tr:nth-child(3n) td {
-    border-bottom:solid ;
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem 1rem;
 }
 
-#four tr:nth-child(2n) td, #six tr:nth-child(2n) td {
-    border-bottom:solid ;
+.segmented {
+    display: inline-flex;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
 }
 
-#four td:nth-child(2n) {
-    border-right:solid ;
+.segmented button {
+    padding: 0.5rem 0.9rem;
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    font: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
 }
 
-input {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
+.segmented button + button {
+    border-left: 1px solid var(--line);
+}
+
+.segmented button:hover {
+    color: var(--text);
+}
+
+.segmented button.is-active {
+    background: var(--accent);
+    color: #fff;
+}
+
+.field {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+select {
+    padding: 0.5rem 0.6rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.button {
+    padding: 0.5rem 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: border-color 0.15s, transform 0.05s;
+}
+
+.button:hover {
+    border-color: var(--accent);
+}
+
+.button:active {
+    transform: translateY(1px);
+}
+
+.button--primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+}
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* The board is a plain grid; --size is set per board size from JS. */
+.board {
+    display: grid;
+    grid-template-columns: repeat(var(--size, 9), var(--cell));
+    background: var(--surface);
+    border: 2px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+}
+
+.board--solved {
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--success) 55%, transparent);
+}
+
+.cell {
+    width: var(--cell);
+    height: var(--cell);
+    border: 0;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: transparent;
+    color: var(--entry);
+    font: inherit;
+    font-size: 1.15rem;
     text-align: center;
-    border: none;
-    font-size: 15px;
+    caret-color: transparent;
+    transition: background 0.15s, color 0.15s;
 }
 
-.readonly {
-    font-weight: bold;
+.cell--box-right {
+    border-right: 2px solid var(--rule);
 }
 
-/* Disabling the scroll wheel for the input type=number fields. Got that from w3scools */
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.cell--box-bottom {
+    border-bottom: 2px solid var(--rule);
 }
 
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
+.cell--given {
+    color: var(--given);
+    font-weight: 650;
+    cursor: default;
+}
+
+.cell:not(.cell--given):hover {
+    background: color-mix(in srgb, var(--accent) 8%, transparent);
+}
+
+.cell:focus {
+    outline: none;
+    background: color-mix(in srgb, var(--accent) 16%, transparent);
+}
+
+.cell--conflict {
+    background: var(--conflict-bg);
+    color: var(--conflict-fg);
+}
+
+.cell--wrong {
+    background: var(--wrong-bg);
+    color: var(--wrong-fg);
+}
+
+.status {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.hint {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.8rem;
+    opacity: 0.75;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.toasts {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    z-index: 10;
+}
+
+.toast {
+    padding: 0.7rem 1rem;
+    border-radius: var(--radius);
+    border-left: 3px solid var(--accent);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 0.9rem;
+    box-shadow: 0 6px 20px rgb(0 0 0 / 0.14);
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 0.25s, transform 0.25s;
+}
+
+.toast--leaving {
+    opacity: 0;
+    transform: translateX(0.75rem);
+}
+
+.toast--success {
+    border-left-color: var(--success);
+}
+
+.toast--error {
+    border-left-color: var(--conflict-fg);
+}
+
+@media (max-width: 480px) {
+    :root {
+        --cell: min(38px, 10vw);
+    }
+
+    body {
+        padding-top: 1.25rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
 }

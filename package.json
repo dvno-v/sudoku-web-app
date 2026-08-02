@@ -1,28 +1,16 @@
 {
   "name": "sudoku-web-app",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "2.0.0",
+  "description": "A dependency-free sudoku web app with 4x4, 6x6 and 9x9 boards, a backtracking solver and a puzzle generator",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node --project ./tsconfig.json ./src/main.ts",
-    "start:safe": "npm run lint && ts-node --project ./tsconfig.json ./src/main.ts",
-    "lint": "tslint --format stylish -p .",
-    "lint:fix": "tslint --fix -p .",
-    "clean": "rimraf ./dist",
-    "build": "npm run clean & tsc --project .",
-    "build-w": "npm run clean & tsc --project . -w"
+    "start": "node scripts/serve.js",
+    "test": "node --test 'test/**/*.test.js'"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "jquery": "^3.5.1",
-    "toastr": "^2.1.4"
-  },
-  "devDependencies": {
-    "@types/jquery": "^3.3.38",
-    "@types/toastr": "^2.1.38",
-    "eslint": "^7.3.0"
-  }
+  "keywords": [
+    "sudoku",
+    "backtracking",
+    "puzzle-generator"
+  ],
+  "license": "ISC"
 }
